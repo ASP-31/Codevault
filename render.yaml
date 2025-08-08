@@ -3,11 +3,11 @@ services:
     name: Code_Vault
     env: node
     plan: free
-    repo: https://github.com/asp31/Codevault
+    repo: https://github.com/ASP-31/Codevault
     branch: main
-    rootDir: backendgit # Root directory for backend
+    rootDir: backend # Root directory for backend
     buildCommand: npm install
-    startCommand: node backend/server.js
+    startCommand: node server.js
     envVars:
       - key: MONGODB_URI
         value: mongodb+srv://asp312006:3ZsmmVtDCzwCDf92@mycluster.axiyoef.mongodb.net/
