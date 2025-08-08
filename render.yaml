@@ -20,6 +20,6 @@ type: static
     plan: free
     repo: https://github.com/ASP-31/CodeVault
     branch: main
-    rootDir: CodeVault/v2/frontend
+    rootDir: frontend
     buildCommand: ""        # No build needed for static frontend
     staticPublishPath: .    # Serve directly from frontend root
