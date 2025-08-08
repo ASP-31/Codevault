@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity Log - CodeVault</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    CodeVault
+    <button class="logout" onclick="logout()">Logout</button>
+  </header>
+
+  <h2 style="text-align:center; margin-top:1rem;">My Activity</h2>
+  <ul id="activity-list" style="padding: 1rem;"></ul>
+  <button style="margin: 1rem;" onclick="window.location.href='dashboard.html'">Back</button>
+
+<script>
+async function loadActivity() {
+  const res = await fetch('/api/activity');
+  if (res.ok) {
+    const activity = await res.json();
+    document.getElementById('activity-list').innerHTML =
+      activity.map(a => `<li>${a.action} — ${new Date(a.timestamp).toLocaleString()}</li>`).join('');
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+async function logout() {
+  await fetch('/api/logout');
+  window.location.href = 'index.html';
+}
+
+loadActivity();
+</script>
+</body>
+</html>

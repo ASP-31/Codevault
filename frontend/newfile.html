@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New File - CodeVault</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    CodeVault
+    <button class="logout" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="center-page">
+    <div class="card">
+      <h2>Create New File</h2>
+      <form id="newFileForm">
+        <input type="text" name="filename" placeholder="File Name" required>
+        <textarea name="content" placeholder="Paste your code here..." required></textarea>
+        <button type="submit">Save File</button>
+      </form>
+      <button onclick="window.location.href='dashboard.html'">Back</button>
+    </div>
+  </div>
+
+<script>
+document.getElementById('newFileForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const res = await fetch('/api/files', {
+    method: 'POST',
+    body: new URLSearchParams(data)
+  });
+  if (res.ok) {
+    alert('File saved');
+    window.location.href = 'dashboard.html';
+  } else {
+    alert(await res.text());
+  }
+});
+
+async function logout() {
+  await fetch('/api/logout');
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
