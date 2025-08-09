@@ -16,11 +16,7 @@ services:
       - key: PORT
         value: 3000
 
-<<<<<<< HEAD
   - type: static 
-=======
-  - type: static_site
->>>>>>> 7530c2dd763950d42f43a91671c7406fae7eb10e
     name: Code_Vault_Frontend
     plan: free
     repo: https://github.com/ASP-31/Codevault
