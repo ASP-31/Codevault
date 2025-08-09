@@ -138,3 +138,23 @@ button:hover, .btn:hover {
     width: 90%;
   }
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Prevents it from getting too wide */
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
