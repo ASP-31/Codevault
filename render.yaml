@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: Code_Vault
+    name: Code_Vault_Backend
     env: node
     plan: free
     repo: https://github.com/ASP-31/Codevault
@@ -10,17 +10,8 @@ services:
     startCommand: node server.js
     envVars:
       - key: MONGODB_URI
-        value: mongodb+srv://asp312006:3ZsmmVtDCzwCDf92@mycluster.axiyoef.mongodb.net/
+        value: your_mongo_url
       - key: JWT_SECRET
-        value: f64c2de3ab89c5b0c347ed7f1a027e9cd0e8b6a93f5c9f3bb2a1d7b7aa876f0c40cfab5dfe8bc95d8e4b93b6ef7d74d2b718b8db6e913c89aa5a967aa4eb9f89
+        value: your_secret
       - key: PORT
         value: 3000
-
-  - type: static
-    name: Code_Vault_Frontend
-    plan: free
-    repo: https://github.com/ASP-31/Codevault
-    branch: main
-    rootDir: frontend
-    buildCommand: ""
-    staticPublishPath: .
