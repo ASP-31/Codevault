@@ -14,7 +14,7 @@ services:
       - key: JWT_SECRET
         value: f64c2de3ab89c5b0c347ed7f1a027e9cd0e8b6a93f5c9f3bb2a1d7b7aa876f0c40cfab5dfe8bc95d8e4b93b6ef7d74d2b718b8db6e913c89aa5a967aa4eb9f89
       - key: PORT
-        value: 10000
+        value: 3000
 
   - type: static
     name: Code_Vault_Frontend
