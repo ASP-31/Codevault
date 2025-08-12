@@ -1,160 +1,141 @@
-/* Global Reset & Theme */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #121212;
-  color: #f5f5f5;
+/* =========================
+   Root Variables
+   ========================= */
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --bg-input: #2c2c2c;
+  --primary: #4CAF50;
+  --primary-hover: #45a049;
+  --text-light: #f5f5f5;
+  --text-muted: #bbb;
+  --radius: 8px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
 }
 
-/* App Header */
-header {
-  background: #1f1f1f;
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4CAF50;
-  border-bottom: 1px solid #2c2c2c;
-}
-
-header .logout {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  background: #4CAF50;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-header .logout:hover {
-  background: #45a049;
-}
-
-/* Centering container (login/register) */
-.center-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* Card Style (forms, files) */
-.card {
-  background: #1e1e1e;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  width: 320px;
-}
-
-/* Form Inputs */
-input[type="text"],
-input[type="password"],
-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: none;
-  border-radius: 8px;
-  background: #2c2c2c;
-  color: #f5f5f5;
-  font-size: 1rem;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 150px;
-  font-family: monospace;
-}
-
-/* Buttons */
-button, .btn {
-  background: #4CAF50;
-  color: #fff;
-  padding: 0.7rem 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.3s, transform 0.2s;
-}
-
-button:hover, .btn:hover {
-  background: #45a049;
-  transform: scale(1.03);
-}
-
-/* Dashboard Grid */
-.file-list {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  padding: 1rem;
-}
-
-.file-card {
-  background: #1e1e1e;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-}
-
-.file-card:hover {
-  transform: scale(1.03);
-  background: #272727;
-}
-
-.file-card .filename {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.file-card .date {
-  font-size: 0.8rem;
-  color: #bbb;
-  margin-top: 0.25rem;
-}
-
-/* Activity List */
-#activity-list li {
-  background: #1e1e1e;
-  padding: 0.5rem;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-  .file-list {
-    grid-template-columns: 1fr;
-  }
-  .card {
-    width: 90%;
-  }
-}
-* {
-  box-sizing: border-box;
-}
-
+/* =========================
+   Global Styles
+   ========================= */
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
   overflow-x: hidden;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px; /* Prevents it from getting too wide */
-  margin: auto;
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary-hover);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* =========================
+   Layout Containers
+   ========================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--spacing-md);
+}
+
+header {
+  background: var(--bg-card);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+/* =========================
+   Cards & File List
+   ========================= */
+.card {
+  background: var(--bg-card);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.file-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.file-item {
+  background: var(--bg-input);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  word-wrap: break-word;
+}
+
+/* =========================
+   Forms & Inputs
+   ========================= */
+input, select, textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  margin: var(--spacing-sm) 0;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--bg-input);
+  color: var(--text-light);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--primary);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+button, .btn {
+  background: var(--primary);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .btn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+button:focus, .btn:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:active, .btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   Text & Muted
+   ========================= */
+.muted {
+  color: var(--text-muted);
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 600px) {
+  .file-list {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-sm);
+  }
+  .card {
+    width: 95%;
+    padding: var(--spacing-md);
+  }
 }
