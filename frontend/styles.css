@@ -15,6 +15,7 @@ header {
   font-weight: bold;
   color: #4CAF50;
   border-bottom: 1px solid #2c2c2c;
+  position: relative;
 }
 
 header .logout {
@@ -40,6 +41,7 @@ header .logout:hover {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 /* Card Style (forms, files) */
@@ -49,6 +51,7 @@ header .logout:hover {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   width: 320px;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 /* Form Inputs */
@@ -103,6 +106,7 @@ button:hover, .btn:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
+  animation: fadeInUp 0.5s ease-in-out;
 }
 
 .file-card:hover {
@@ -131,75 +135,74 @@ button:hover, .btn:hover {
 
 /* ===== VIEW FILE PAGE ===== */
 .viewfile-container {
-    max-width: none;
-    width: 100%;
-    margin: 0;
-    padding: 1.5rem;
+  max-width: 1400px;
+  width: 95%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  animation: fadeIn 0.7s ease-in-out;
 }
 
 .viewfile-container h2 {
-    color: #4CAF50;
-    margin-bottom: 1rem;
+  color: #4CAF50;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .viewfile-content {
-    background: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 10px;
-    font-family: monospace;
-    font-size: 1rem;
-    line-height: 1.5;
-    white-space: pre; /* Preserve spacing exactly */
-    overflow-x: auto; /* Allow horizontal scroll */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-
-    /* Always big */
-    width: 100%;
-    max-width: 1400px; /* Adjust as you like */
-    min-height: 80vh;
-    margin: auto;
+  background: #1e1e1e;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  border: 1px solid #2c2c2c;
+  transition: background 0.3s, transform 0.2s;
+  animation: fadeInUp 0.6s ease-in-out;
 }
 
-/* Mobile Adjustments */
+.viewfile-content:hover {
+  background: #252525;
+  transform: scale(1.01);
+}
+
+/* Subtle scrollbar styling */
+.viewfile-content::-webkit-scrollbar {
+  height: 8px;
+  background: #1e1e1e;
+}
+.viewfile-content::-webkit-scrollbar-thumb {
+  background: #4CAF50;
+  border-radius: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Mobile Tweaks */
 @media (max-width: 600px) {
-  .file-list {
-    grid-template-columns: 1fr;
-  }
   .card {
     width: 90%;
+    padding: 1.5rem;
   }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-.file-item {
-  display: inline-block;
-  background: #2a2a2a; /* dark background */
-  color: #fff;         /* white text */
-  padding: 0.4rem 0.8rem;
-  border-radius: 5px;
-  font-family: monospace;
-  font-size: 0.95rem;
-}
-.file-item:hover {
-  background: #3a3a3a;
-  cursor: pointer;
+  .viewfile-container {
+    padding: 1rem;
+  }
+  .viewfile-content {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
 }

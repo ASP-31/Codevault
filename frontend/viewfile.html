@@ -3,6 +3,97 @@
 <head>
   <title>View File - CodeVault</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    header {
+      background: #1f1f1f;
+      padding: 15px;
+      text-align: center;
+      color: #4caf50;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .logout {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background-color: #4caf50;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout:hover {
+      background-color: #45a049;
+    }
+
+    .viewer {
+      max-width: 90%;
+      margin: 20px auto;
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #4caf50;
+    }
+
+    pre {
+      margin: 15px 0;
+      padding: 15px;
+      background: #2b2b2b;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: "Fira Code", monospace;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #f8f8f2;
+    }
+
+    pre::-webkit-scrollbar {
+      height: 8px;
+    }
+    pre::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 4px;
+    }
+    pre::-webkit-scrollbar-thumb:hover {
+      background: #888;
+    }
+
+    .actions {
+      margin-top: 15px;
+    }
+
+    .actions button {
+      margin-right: 10px;
+      background: #4caf50;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      background: #45a049;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -10,10 +101,10 @@
     <button class="logout" onclick="logout()">Logout</button>
   </header>
 
-  <div class="center-page">
-    <div class="card">
-      <h2 id="filename"></h2>
-      <pre id="filecontent"></pre>
+  <div class="viewer">
+    <h2 id="filename"></h2>
+    <pre id="filecontent">// Loading...</pre>
+    <div class="actions">
       <button onclick="editFile()">Edit</button>
       <button onclick="deleteFile()">Delete</button>
       <button onclick="window.location.href='dashboard.html'">Back</button>
