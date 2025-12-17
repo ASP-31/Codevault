@@ -11,7 +11,7 @@ const app = express();
 const PORT = 3000;
 
 // ===== Connect to MongoDB =====
-mongoose.connect('mongodb+srv://asp312006:4nTv8yjOqe1wSA3t@mycluster.axiyoef.mongodb.net/', {
+mongoose.connect('mongodb+srv://asp312006:xb21CMZ7r1pMCT6F@mycluster.axiyoef.mongodb.net/', {
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
 
