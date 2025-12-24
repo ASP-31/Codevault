@@ -206,3 +206,14 @@ button:hover, .btn:hover {
     font-size: 0.9rem;
   }
 }
+/* Reset Password Button Style */
+.reset.password.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}

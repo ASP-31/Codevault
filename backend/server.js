@@ -6,12 +6,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const User = require('./models/User');
 const File = require('./models/File');
-
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
 // ===== Connect to MongoDB =====
-mongoose.connect('mongodb+srv://asp312006:xb21CMZ7r1pMCT6F@mycluster.axiyoef.mongodb.net/', {
+mongoose.connect('mongodb+srv://asp312006:a7BWKjwgU1Pg4vhQ@mycluster.axiyoef.mongodb.net/', {
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
 
@@ -32,6 +32,8 @@ function isLoggedIn(req, res, next) {
   if (!req.session.userId) return res.status(401).send('Not logged in');
   next();
 }
+app.use(cors());
+
 
 // ===== Routes =====
 
@@ -124,3 +126,47 @@ app.get('/api/logout', (req, res) => {
 });
 app.get("/user", getUsers);
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+
+//reset password
+app.post('/api/reset-password', async (req, res) => {
+  try {
+    const { username, newPassword } = req.body;
+
+    if (!username || !newPassword) {
+      return res.status(400).send('All fields required');
+    }
+
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+    console.log('Password reset for user:', username);
+    res.send('Password reset successful');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error resetting password');
+  }
+});
+
+//changepassword
+app.post('/api/change-password', isLoggedIn, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const user = await User.findById(req.session.userId);
+
+    const match = await bcrypt.compare(currentPassword, user.password);
+    if (!match) return res.status(401).send('Current password is incorrect'); 
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+    res.send('Password changed successfully');
+  } catch (err) {
+    res.status(500).send('Error changing password');
+  }
+});
