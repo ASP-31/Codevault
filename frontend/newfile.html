@@ -3,10 +3,13 @@
 <head>
   <title>New File - CodeVault</title>
   <link rel="stylesheet" href="styles.css">
+
+
 </head>
 <body>
   <header>
     CodeVault
+    <button id="themeToggle" class="theme-btn">🌙</button>
     <button class="logout" onclick="logout()">Logout</button>
   </header>
 
@@ -43,5 +46,6 @@ async function logout() {
   window.location.href = 'index.html';
 }
 </script>
+<script src="theme.js"></script>
 </body>
 </html>

@@ -3,11 +3,14 @@
 <head>
   <title>Dashboard - CodeVault</title>
   <link rel="stylesheet" href="styles.css">
+
+
 </head>
 <body>
   <header>
     CodeVault
     <button class="logout" onclick="logout()">Logout</button>
+    <button id="themeToggle" class="theme-btn">🌙</button>
   </header>
 
   <button class="btn" style="margin: 1rem;" onclick="window.location.href='newfile.html'">+ New File</button>
@@ -41,5 +44,6 @@ async function logout() {
 
 loadFiles();
 </script>
+<script src="theme.js"></script>
 </body>
 </html>

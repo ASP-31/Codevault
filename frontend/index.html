@@ -3,7 +3,14 @@
 <head>
   <title>Login - CodeVault</title>
   <link rel="stylesheet" href="styles.css">
+  
+
 </head>
+<header>
+  CodeVault
+  <button id="themeToggle" class="theme-btn">🌙</button>
+</header>
+
 <body class="center-page">
   <div class="card">
     <h2>Login</h2>
@@ -17,7 +24,6 @@
     <p>Don’t have an account? <a href="register.html">Register</a></p>
     <a  class="reset password button" href="reset-password.html">reset password</a>
   </div>
-
 <script>
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -36,5 +42,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   }
 });
 </script>
+<script src="theme.js"></script>
+
 </body>
 </html>
